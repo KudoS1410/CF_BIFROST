@@ -8,8 +8,18 @@ function readTime(unix_timestamp){
     return date.toString().substring(0, date.toString().length - 30);
 
 }
+
+function daysleft( c ){
+    let date1 = c*1000;
+    let date2 = Date.now();
+    let diffTime = Math.abs(date2 - date1);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    return diffDays;
+}
+
 function createcards(info){
     console.log("creating cards");
+    info = info.reverse();
     // times = [];
     // for(let i = 0; i < info.length ; i++){
     //     var unix_timestamp = info[i].startTimeSeconds;
@@ -26,6 +36,14 @@ function createcards(info){
 
     //     console.log(formattedTime);
     //     times.push(date.toString().substring(0, date.toString().length - 30));
+    /*
+    let date1 = cont.startTimeSeconds;
+    let date2 = Date.now();
+    let diffTime = Math.abs(date2 - date1);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    console.log(diffTime + " milliseconds");
+    console.log(diffDays + " days");
+    */
     
     // }
 
@@ -34,7 +52,7 @@ function createcards(info){
         return `
         <div class="card">
         <a href="https://codeforces.com/contests/${cont.id}" style="text-decoration: none; color: inherit;" target="_blank"><p>${cont.name}</p></a>
-        <p id="time">${readTime(cont.startTimeSeconds)}</p>
+        <p id="time">${readTime(cont.startTimeSeconds)}<br>( ${(daysleft(cont.startTimeSeconds) == 1)?"today": "within " +daysleft(cont.startTimeSeconds) +" days"})</p>
         </div>
          `
     }).join('')
