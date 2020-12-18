@@ -1,6 +1,6 @@
 {
-    "name": "Trial version",
-    "short_name": "Trial" ,
+    "name": "Codeforces Bifrost",
+    "short_name": "BifrostCF" ,
     "start_url":".",
     "background_color": "#6dcdb1",
     "theme_color": "#009578",
