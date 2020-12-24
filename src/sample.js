@@ -1,4 +1,4 @@
-var list_url = "https://codeforces.com/api/contest.list";
+var list_url = "https://codeforces.com/api/contest.list?lang=en";
 var arr = [];
 
 function fillarr(data){
