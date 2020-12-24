@@ -14,6 +14,15 @@ function daysleft( c ){
     let date2 = Date.now();
     let diffTime = Math.abs(date2 - date1);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    // let ans = "";
+    if(diffDays > 2)
+        return ["within", diffDays.toString(), "days"].join(" ");
+    // withing 2 days
+    if(diffDays == 1){
+        let hours = Math.floor(diffTime / (1000 * 60 * 60 ));
+        let minutes = Math.ceil((diffTime / (1000 * 60 * 60 ) - hours)*60);
+        return ["within", hours.toString(), hours?"hour":"hours", minutes?minutes:"", "minutes"].join(" ");
+    }
     return diffDays;
 }
 
@@ -52,7 +61,7 @@ function createcards(info){
         return `
         <div class="card">
         <a href="https://codeforces.com/contests/${cont.id}" style="text-decoration: none; color: inherit;" target="_blank"><p>${cont.name}</p></a>
-        <p id="time">${readTime(cont.startTimeSeconds)}<br>( ${(daysleft(cont.startTimeSeconds) == 1)?"today": "within " +daysleft(cont.startTimeSeconds) +" days"})</p>
+        <p id="time">${readTime(cont.startTimeSeconds)}<br>( ${daysleft(cont.startTimeSeconds)})</p>
         </div>
          `
     }).join('')
