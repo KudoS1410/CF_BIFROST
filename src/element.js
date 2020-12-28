@@ -15,7 +15,7 @@ function daysleft( c ){
     let diffTime = Math.abs(date2 - date1);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     // let ans = "";
-    if(diffDays > 2)
+    if(diffDays >= 2)
         return ["within", diffDays.toString(), "days"].join(" ");
     // withing 2 days
     if(diffDays == 1){
